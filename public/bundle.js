@@ -12694,9 +12694,13 @@ var React = __webpack_require__(5);
 
 var Examples = props => {
   return React.createElement(
-    'h2',
+    'div',
     null,
-    'Examples Component!'
+    React.createElement(
+      'h2',
+      null,
+      'Welcome to Examples Component!'
+    )
   );
 };
 
