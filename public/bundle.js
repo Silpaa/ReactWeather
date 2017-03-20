@@ -12760,7 +12760,6 @@ class Weather extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location) {
-    debugger;
     var that = this;
     console.log("What is isLoading1..." + this.state.isLoading);
     this.setState({ isLoading: true });

@@ -13,7 +13,6 @@ export default class Weather extends React.Component{
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location){
-    debugger;
     var that = this;
 console.log("What is isLoading1..."+this.state.isLoading);
     this.setState({isLoading: true});
