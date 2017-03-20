@@ -8,6 +8,7 @@ import Examples from './components/Examples';
 
 //Load foundation-sites
 import foundationsites from 'style!css!foundation-sites/dist/foundation.min.css';
+$(document).foundation();
 
 ReactDOM.render(
   <Router history = {hashHistory}>

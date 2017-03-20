@@ -12687,7 +12687,7 @@ module.exports = function(src) {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
@@ -12711,6 +12711,7 @@ module.exports = function(src) {
 
 //Load foundation-sites
 
+$(document).foundation();
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
   __WEBPACK_IMPORTED_MODULE_2_react_router__["c" /* Router */],
@@ -12723,6 +12724,7 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router__["f" /* IndexRoute */], { component: __WEBPACK_IMPORTED_MODULE_4__components_Weather__["a" /* default */] })
   )
 ), document.getElementById('app'));
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(276)))
 
 /***/ },
 /* 119 */
@@ -13691,32 +13693,80 @@ module.exports = Main;
 
 
 
-var Nav = props => {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    null,
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'h2',
-      null,
-      'Nav Component'
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexLink */],
-      { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-      'Get Weather '
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
-      { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-      'About '
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
-      { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-      'Examples '
-    )
-  );
-};
+class Nav extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  onSearch(e) {
+    e.preventDefault(); //prevents browser from refreshing the page
+    alert("not yet wired up");
+  }
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'top-bar' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'top-bar-left' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'ul',
+          { className: 'menu' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'menu-text' },
+            'React Weather'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexLink */],
+              { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+              'Get Weather '
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
+              { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+              'About '
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
+              { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+              'Examples '
+            )
+          )
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'top-bar-right' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'form',
+          { onSubmit: this.onSearch },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'ul',
+            { className: 'menu' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'search', placeholder: 'Search Weather' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', className: 'button', value: 'Get Weather' })
+            )
+          )
+        )
+      )
+    );
+  }
+}
 module.exports = Nav;
 
 /***/ },
@@ -28675,6 +28725,12 @@ __webpack_require__(120);
 __webpack_require__(119);
 module.exports = __webpack_require__(118);
 
+
+/***/ },
+/* 276 */
+/***/ function(module, exports) {
+
+module.exports = jQuery;
 
 /***/ }
 /******/ ]);
