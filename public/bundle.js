@@ -12699,7 +12699,7 @@ var Examples = props => {
     React.createElement(
       'h2',
       null,
-      'Welcome to Examples Component!'
+      'Examples!'
     )
   );
 };
