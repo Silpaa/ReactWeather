@@ -36,9 +36,6 @@ console.log("What is isLoading1..."+this.state.isLoading);
   }
   render(){
     var {isLoading,temp,location,errorMessage} = this.state;
-
-
-
     console.log("What is isLoading2..."+isLoading);
     function renderMessage(){
       if(isLoading){
@@ -58,7 +55,7 @@ console.log("What is isLoading1..."+this.state.isLoading);
     }
     return(
       <div>
-        <h1 className="text-center">Get Weather</h1>
+        <h1 className="text-center page-title">Get Weather</h1>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()}
         {renderError()}
