@@ -24,7 +24,7 @@ export default class WeatherForm extends React.Component{
           <input
           type="text"
           ref={(input) => { this.location = input; }} />
-          <button>Get Weather</button>
+        <button className="button expanded hollow">Get Weather</button>
         </form>
       </div>
 

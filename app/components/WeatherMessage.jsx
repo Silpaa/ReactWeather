@@ -3,7 +3,7 @@ import React from 'react';
 var WeatherForm = ({temp,location}) => {
   return(
     <div>
-      <h3>It's {temp} in {location}</h3>
+      <h1 className="text-center">It's {temp} in {location}</h1>
     </div>
   );
 }
