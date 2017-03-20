@@ -13,11 +13,13 @@ export default class Weather extends React.Component{
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location){
+    console.log("handleSearch "+location);
     var that = this;
-console.log("What is isLoading1..."+this.state.isLoading);
     this.setState({
         isLoading: true,
-        errorMessage: undefined
+        errorMessage: undefined,
+        location: undefined,
+        temp: undefined
     });
 
     openWeatherMap.getTemp(location).then(function(temp){
@@ -27,16 +29,30 @@ console.log("What is isLoading1..."+this.state.isLoading);
         isLoading: false
       });
     },function(e){
-
       that.setState({
         isLoading: false,
         errorMessage: e.message
       });
     })
   }
+  componetDidMount(){
+    var location = this.props.location.query.location;
+    console.log("componetDidMount "+location);
+    if(location && location.length > 0){
+      this.handleSearch(location);
+      window.location.hash ='#/';
+    }
+  }
+  componetWillReceiveProps(newProps){
+    var location = newProps.location.query.location;
+    if(location && location.length > 0){
+      this.handleSearch(location);
+      window.location.hash ='#/';
+    }
+  }
   render(){
     var {isLoading,temp,location,errorMessage} = this.state;
-    console.log("What is isLoading2..."+isLoading);
+    
     function renderMessage(){
       if(isLoading){
         return <h3 className="text-center">Fetching Weather...</h3>

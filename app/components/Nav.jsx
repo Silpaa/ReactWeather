@@ -2,9 +2,19 @@ import React from 'react';
 import {Link,IndexLink} from 'react-router';
 
 class Nav extends React.Component{
+  constructor(props){
+    super(props);
+    this.onSearch = this.onSearch.bind(this);
+  }
   onSearch(e){
     e.preventDefault();//prevents browser from refreshing the page
-    alert("not yet wired up");
+    var location = this.refs.searchtxt.value;
+    var encodedLocation = encodeURIComponent(location);
+    console.log("onSearch1 <> "+encodedLocation);
+    if(location.length > 0){
+      this.refs.searchtxt.value = '';
+      window.location.hash = '#/?location=' + encodedLocation;
+    }
   }
   render(){
     return(
@@ -27,7 +37,7 @@ class Nav extends React.Component{
             <form onSubmit={this.onSearch}>
               <ul className="menu">
                 <li>
-                  <input type="search" placeholder="Search weather by city"/>
+                  <input type="search" placeholder="Search weather by city" ref="searchtxt"/>
                 </li>
                 <li>
                   <input type="submit" className="button" value="Get Weather"/>

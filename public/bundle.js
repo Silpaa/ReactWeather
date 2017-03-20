@@ -14098,9 +14098,19 @@ module.exports = Main;
 
 
 class Nav extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.onSearch = this.onSearch.bind(this);
+  }
   onSearch(e) {
     e.preventDefault(); //prevents browser from refreshing the page
-    alert("not yet wired up");
+    var location = this.refs.searchtxt.value;
+    var encodedLocation = encodeURIComponent(location);
+    console.log("onSearch1 <> " + encodedLocation);
+    if (location.length > 0) {
+      this.refs.searchtxt.value = '';
+      window.location.hash = '#/?location=' + encodedLocation;
+    }
   }
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -14158,7 +14168,7 @@ class Nav extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'li',
               null,
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'search', placeholder: 'Search weather by city' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'search', placeholder: 'Search weather by city', ref: 'searchtxt' })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'li',
@@ -14202,11 +14212,13 @@ class Weather extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location) {
+    console.log("handleSearch " + location);
     var that = this;
-    console.log("What is isLoading1..." + this.state.isLoading);
     this.setState({
       isLoading: true,
-      errorMessage: undefined
+      errorMessage: undefined,
+      location: undefined,
+      temp: undefined
     });
 
     __WEBPACK_IMPORTED_MODULE_3__api_openWeatherMap___default.a.getTemp(location).then(function (temp) {
@@ -14216,16 +14228,30 @@ class Weather extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         isLoading: false
       });
     }, function (e) {
-
       that.setState({
         isLoading: false,
         errorMessage: e.message
       });
     });
   }
+  componetDidMount() {
+    var location = this.props.location.query.location;
+    console.log("componetDidMount " + location);
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+  }
+  componetWillReceiveProps(newProps) {
+    var location = newProps.location.query.location;
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+  }
   render() {
     var { isLoading, temp, location, errorMessage } = this.state;
-    console.log("What is isLoading2..." + isLoading);
+
     function renderMessage() {
       if (isLoading) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -14276,12 +14302,10 @@ class WeatherForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 
   onFormSubmit(event) {
     var loc = this.location.value;
-    console.log('1 A location was submitted: ' + loc);
     if (loc.length > 0) {
       this.location.value = '';
       this.props.onSearch(loc);
     }
-    console.log('2 A location was submitted: ' + loc);
 
     event.preventDefault();
   }
