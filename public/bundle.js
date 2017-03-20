@@ -12678,9 +12678,18 @@ module.exports = ReactPropTypesSecret;
 
 var About = props => {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'h2',
+    'div',
     null,
-    'About Component'
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'h2',
+      null,
+      'About'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'p',
+      null,
+      'Welcome to about page.'
+    )
   );
 };
 
@@ -12699,7 +12708,7 @@ var Examples = props => {
     React.createElement(
       'h2',
       null,
-      'Examples!'
+      'Examples Page!'
     )
   );
 };
