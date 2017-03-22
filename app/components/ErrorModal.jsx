@@ -1,12 +1,6 @@
 import React from 'react';
 
 class ErrorModal extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      title: 'Error'
-    }
-  }
   propTypes: {
     title: React.PropTypes.string,
     message: React.PropTypes.string.isRequired
@@ -29,4 +23,7 @@ class ErrorModal extends React.Component{
   }
 }
 
+ErrorModal.defaultProps = {
+     title:'Error'
+}
 module.exports = ErrorModal;

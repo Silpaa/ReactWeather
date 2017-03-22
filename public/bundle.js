@@ -12982,6 +12982,7 @@ module.exports = jQuery;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Main__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Main___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Main__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Weather__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Weather___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Weather__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_About__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_About___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_About__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Examples__ = __webpack_require__(145);
@@ -13013,7 +13014,7 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
     { path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_Main___default.a },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router__["Route"], { path: 'about', component: __WEBPACK_IMPORTED_MODULE_5__components_About___default.a }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('route', { path: 'examples', component: __WEBPACK_IMPORTED_MODULE_6__components_Examples___default.a }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router__["IndexRoute"], { component: __WEBPACK_IMPORTED_MODULE_4__components_Weather__["a" /* default */] })
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router__["IndexRoute"], { component: __WEBPACK_IMPORTED_MODULE_4__components_Weather___default.a })
   )
 ), document.getElementById('app'));
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
@@ -13966,13 +13967,6 @@ module.exports = About;
 
 
 class ErrorModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: 'Error'
-    };
-  }
-
   componentDidMount() {
     var modal = new Foundation.Reveal($('#error-modal'));
     modal.open();
@@ -14005,6 +13999,9 @@ class ErrorModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
   }
 }
 
+ErrorModal.defaultProps = {
+  title: 'Error'
+};
 module.exports = ErrorModal;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
@@ -14106,7 +14103,7 @@ class Nav extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     e.preventDefault(); //prevents browser from refreshing the page
     var location = this.refs.searchtxt.value;
     var encodedLocation = encodeURIComponent(location);
-    console.log("onSearch1 <> " + encodedLocation);
+
     if (location.length > 0) {
       this.refs.searchtxt.value = '';
       window.location.hash = '#/?location=' + encodedLocation;
@@ -14212,7 +14209,6 @@ class Weather extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location) {
-    console.log("handleSearch " + location);
     var that = this;
     this.setState({
       isLoading: true,
@@ -14234,15 +14230,14 @@ class Weather extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       });
     });
   }
-  componetDidMount() {
+  componentDidMount() {
     var location = this.props.location.query.location;
-    console.log("componetDidMount " + location);
     if (location && location.length > 0) {
       this.handleSearch(location);
       window.location.hash = '#/';
     }
   }
-  componetWillReceiveProps(newProps) {
+  componentWillReceiveProps(newProps) {
     var location = newProps.location.query.location;
     if (location && location.length > 0) {
       this.handleSearch(location);
@@ -14283,7 +14278,9 @@ class Weather extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       renderError()
     );
   }
-}/* harmony export */ exports["a"] = Weather;;
+}
+
+module.exports = Weather;
 
 /***/ },
 /* 149 */
@@ -14380,7 +14377,7 @@ exports = module.exports = __webpack_require__(79)();
 
 
 // module
-exports.push([module.i, ".page-title {\n  color: purple;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
+exports.push([module.i, ".page-title {\n  color: #555;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
 
 // exports
 

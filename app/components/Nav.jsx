@@ -10,7 +10,7 @@ class Nav extends React.Component{
     e.preventDefault();//prevents browser from refreshing the page
     var location = this.refs.searchtxt.value;
     var encodedLocation = encodeURIComponent(location);
-    console.log("onSearch1 <> "+encodedLocation);
+
     if(location.length > 0){
       this.refs.searchtxt.value = '';
       window.location.hash = '#/?location=' + encodedLocation;

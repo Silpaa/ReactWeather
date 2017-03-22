@@ -4,16 +4,15 @@ import WeatherMessage from './WeatherMessage';
 import openWeatherMap from '../api/openWeatherMap';
 import ErrorModal from './ErrorModal'
 
-export default class Weather extends React.Component{
-  constructor(props){
+class Weather extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       isLoading: false
-    }
+    };
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleSearch(location){
-    console.log("handleSearch "+location);
     var that = this;
     this.setState({
         isLoading: true,
@@ -35,24 +34,25 @@ export default class Weather extends React.Component{
       });
     })
   }
-  componetDidMount(){
+  componentDidMount(){
     var location = this.props.location.query.location;
-    console.log("componetDidMount "+location);
     if(location && location.length > 0){
       this.handleSearch(location);
-      window.location.hash ='#/';
+      window.location.hash = '#/';
+
     }
   }
-  componetWillReceiveProps(newProps){
+  componentWillReceiveProps(newProps){
     var location = newProps.location.query.location;
     if(location && location.length > 0){
       this.handleSearch(location);
-      window.location.hash ='#/';
+      window.location.hash = '#/';
+
     }
   }
   render(){
     var {isLoading,temp,location,errorMessage} = this.state;
-    
+
     function renderMessage(){
       if(isLoading){
         return <h3 className="text-center">Fetching Weather...</h3>
@@ -78,4 +78,6 @@ export default class Weather extends React.Component{
       </div>
     );
   }
-};
+}
+
+module.exports = Weather;
